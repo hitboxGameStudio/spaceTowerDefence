@@ -1,2 +1,2 @@
 # spaceTowerDefence
-uzay gemisini yabancı canlılardan korumak görevimiz
+uzay gemisini yabancı canlılardan korumak görevimiz yayında
