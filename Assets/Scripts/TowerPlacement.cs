@@ -18,11 +18,16 @@ public class TowerPlacement : MonoBehaviour
     {
         if (placingTower != null)
         {
-            Ray camRay = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, 0);
 
-            if(Physics.Raycast(camRay,out RaycastHit hitInfo, 100f))
+            if (plane.Raycast(ray, out float distance))
             {
-                placingTower.transform.position = new Vector3(hitInfo.point.x,1, hitInfo.point.z);
+                var worldPosition = ray.GetPoint(distance);
+                var zPos = worldPosition.z < -10 ? worldPosition.z : -10;
+                var xPos = worldPosition.x < 10 ? worldPosition.x : 10;
+                xPos = worldPosition.x > -15 ? worldPosition.x : -15;
+                placingTower.transform.position = new Vector3(xPos, 1,zPos);
             }
 
             if (Input.GetMouseButtonDown(0))
