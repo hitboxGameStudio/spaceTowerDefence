@@ -1,40 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveRadius = 10f;
-    public float waitTime = 2f;
+    public Transform[] waypoints; // Waypoint'leri tutacak dizi
+    public float speed = 5f; // Objenin hareket hýzý
+    private int currentWaypointIndex = 0;
 
-    private NavMeshAgent agent;
-    private float timer;
-
-    private void Start()
+    void Update()
     {
-        agent = GetComponent<NavMeshAgent>();
-        timer = waitTime;
-        MoveToRandomPosition();
-    }
+        if (waypoints.Length == 0) return; // Waypoint yoksa çýk
 
-    private void Update()
-    {
-        timer += Time.deltaTime;
+        Transform targetWaypoint = waypoints[currentWaypointIndex];
+        float distance = speed * Time.deltaTime;
+        Debug.Log(waypoints[currentWaypointIndex].position);
+        Debug.Log(currentWaypointIndex);
 
-        if (timer >= waitTime)
+        // Obje hedef waypoint'e yaklaþýr
+        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, distance);
+
+        // Waypoint'e ulaþýldýysa bir sonraki waypoint'e geç
+        if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.5f)
         {
-            MoveToRandomPosition();
-            timer = 0;
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z,0);
         }
-    }
-
-    void MoveToRandomPosition()
-    {
-        Vector3 randomDirection = Random.insideUnitSphere * moveRadius;
-        randomDirection += transform.position;
-
-        NavMeshHit navHit;
-        NavMesh.SamplePosition(randomDirection, out navHit, moveRadius, -1);
-
-        agent.SetDestination(navHit.position);
     }
 }
