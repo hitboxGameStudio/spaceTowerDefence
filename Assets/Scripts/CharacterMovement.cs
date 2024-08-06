@@ -8,22 +8,31 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+    private Animator animator;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>(); // Animator bileþenini al
     }
 
     void Update()
     {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
         if (controller.isGrounded)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
             moveDirection = new Vector3(moveHorizontal, 0.0f, moveVertical);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
+
+            float currentSpeed = moveDirection.magnitude;
+            animator.SetFloat("Speed", currentSpeed);
+            animator.SetFloat("Direction", moveHorizontal);
+
+            // Boole parametresini ayarla
+            animator.SetBool("isIdle", currentSpeed < 0.01f);
 
             if (Input.GetButton("Jump"))
             {
