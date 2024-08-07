@@ -5,7 +5,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject spawnArea; 
     public float spawnInterval = 5f;
-    public float yOffset = 1f; 
+    public float yOffset = 1f;
+    public Transform[] waypoints;
 
     private void Start()
     {
@@ -14,15 +15,9 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Vector3 spawnAreaSize = spawnArea.transform.localScale * 10; 
-        Vector3 spawnAreaPosition = spawnArea.transform.position;
+        Vector3 spawnPosition = new Vector3(-2.57f, 0.6282701f, 27.88f);
+        enemyPrefab.GetComponent<EnemyMovement>().waypoints = waypoints;
 
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(spawnAreaPosition.x - spawnAreaSize.x / 2, spawnAreaPosition.x + spawnAreaSize.x / 2),
-            spawnAreaPosition.y + yOffset, 
-            Random.Range(spawnAreaPosition.z - spawnAreaSize.z / 2, spawnAreaPosition.z + spawnAreaSize.z / 2)
-        );
-
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPosition, new Quaternion(0f,-180f,0f,0f));
     }
 }

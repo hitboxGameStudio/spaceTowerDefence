@@ -1507,6 +1507,7 @@ GameObject:
   - component: {fileID: 976907989}
   - component: {fileID: 976907988}
   - component: {fileID: 976907987}
+  - component: {fileID: 976907991}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1601,6 +1602,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976907991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976907986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255ced0c00c498941ab537edab0d7cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1035522760}
+  spawnArea: {fileID: 976907986}
+  spawnInterval: 5
+  yOffset: 1
+  waypoints:
+  - {fileID: 1220706528}
+  - {fileID: 1074531105}
+  - {fileID: 305852617}
+  - {fileID: 1257735308}
+  - {fileID: 1412144572}
 --- !u!4 &1008421198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8691baac268480e40af1eca01957ca74, type: 3}
@@ -1629,6 +1652,7 @@ MonoBehaviour:
   - {fileID: 305852617}
   - {fileID: 1257735308}
   - {fileID: 1412144572}
+  waypointAngles: 5a0000004cffffffa6ffffff4cffffff00000000
   speed: 5
 --- !u!54 &1035522764
 Rigidbody:
