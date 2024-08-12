@@ -15,12 +15,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (currentWaypointIndex == waypoints.Length)
         {
-            Destroy(gameObject);
+            transform.position = new Vector3(1000, 1000, 1000);
+            return;
         }
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         float distance = speed * Time.deltaTime;
-        Debug.Log(waypoints[currentWaypointIndex].position);
-        Debug.Log(currentWaypointIndex);
 
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, distance);
 

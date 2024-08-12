@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 spawnPosition = new Vector3(-2.57f, 0.6282701f, 27.88f);
         enemyPrefab.GetComponent<EnemyMovement>().waypoints = waypoints;
+        enemyPrefab.tag = "Enemy";
 
         Instantiate(enemyPrefab, spawnPosition, new Quaternion(0f,-180f,0f,0f));
     }

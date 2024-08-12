@@ -1280,9 +1280,10 @@ GameObject:
   - component: {fileID: 7740829407026251051}
   - component: {fileID: 8635347110822431481}
   - component: {fileID: 8124203936215314574}
+  - component: {fileID: 6820244338586690207}
   m_Layer: 0
   m_Name: Ghoul
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1397,6 +1398,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6820244338586690207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412174304980450798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e2ffe318e673945b3ee3ff335f6536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  healthBar: {fileID: 0}
 --- !u!1 &5612640648640693473
 GameObject:
   m_ObjectHideFlags: 0

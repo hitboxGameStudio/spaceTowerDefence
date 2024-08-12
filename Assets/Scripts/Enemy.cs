@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            transform.position = new Vector3(1000, 1000, 1000);
         }
     }
 }
