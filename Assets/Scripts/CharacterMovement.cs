@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>(); // Animator bileþenini al
+        animator = GetComponent<Animator>(); // Animator bileï¿½enini al
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        // Yer çekimi
+        // Yer ï¿½ekimi
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Hareketi uygula
